@@ -572,7 +572,7 @@
       if (!email) return;
       var btn = document.querySelector(".rv-lead-btn");
       btn.textContent = "Enviando..."; btn.disabled = true;
-      fetch("https://script.google.com/macros/s/AKfycbz0V76AV8o3DhxwWjX57v-1MUUdEmI-DMIfHA3iWUgf7Yx47Bh3AjojKFZZ5V7jbO6d/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbw6SFLgenek1pUmDhOCdVRncSuLLZksju-MN_uZ_azbKRd5rpvjcJmV7_Xyn_akNKNJ/exec", {
         method: "POST",
         body: JSON.stringify({ action: "lead", email: email }),
         headers: { "Content-Type": "text/plain" }
