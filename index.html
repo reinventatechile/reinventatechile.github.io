@@ -568,11 +568,21 @@
     anchor.insertAdjacentElement("beforebegin", el);
     document.getElementById("rv-lead-form").addEventListener("submit", function(e) {
       e.preventDefault();
-      document.getElementById("rv-lead-form").style.display = "none";
-      document.getElementById("rv-lead-ok").style.display = "block";
-      setTimeout(function() {
-        window.open("https://reinventatechile.github.io/inscripcion/guia/", "_blank");
-      }, 800);
+      var email = document.getElementById("rv-lead-email").value.trim();
+      if (!email) return;
+      var btn = document.querySelector(".rv-lead-btn");
+      btn.textContent = "Enviando..."; btn.disabled = true;
+      fetch("https://script.google.com/macros/s/AKfycbw6SFLgenek1pUmDhOCdVRncSuLLZksju-MN_uZ_azbKRd5rpvjcJmV7_Xyn_akNKNJ/exec", {
+        method: "POST",
+        body: JSON.stringify({ action: "lead", email: email }),
+        headers: { "Content-Type": "text/plain" }
+      }).catch(function() {}).finally(function() {
+        document.getElementById("rv-lead-form").style.display = "none";
+        document.getElementById("rv-lead-ok").style.display = "block";
+        setTimeout(function() {
+          window.open("https://reinventatechile.github.io/inscripcion/guia/", "_blank");
+        }, 1200);
+      });
     });
   }
 
