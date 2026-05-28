@@ -149,6 +149,7 @@
   function injectStyles() {
     var s = document.createElement("style");
     s.textContent =
+      ".w-webflow-badge{display:none!important}" +
       /* Fuente Alta ─────────────────────────────────────────── */
       "@font-face{font-family:'Alta';font-weight:400;font-style:normal;src:url('" + FONT.regular + "') format('opentype')}" +
       "@font-face{font-family:'Alta';font-weight:300;font-style:normal;src:url('" + FONT.light   + "') format('opentype')}" +
