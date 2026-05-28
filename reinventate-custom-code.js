@@ -304,8 +304,6 @@
         ".rv-art-title{font-size:18px}" +
         ".rv-spk-header{flex-direction:column;text-align:center}" +
         /* Event extras */
-        ".rv-ticket-wrap{margin:16px 0}" +
-        ".rv-ticket{padding:18px}" +
         ".rv-spk-btn{width:100%;text-align:center;justify-content:center}" +
         /* Lead */
         "#rv-lead{padding:60px 16px}" +
@@ -320,6 +318,10 @@
         ".rv-modal-bg{padding:10px}" +
         ".rv-modal-box{padding:24px 16px 20px}" +
         ".rv-blog-card-title{font-size:15px}" +
+        /* Modal evento en móvil */
+        ".rv-ev-speaker-row{flex-direction:column!important;text-align:center}" +
+        ".rv-ev-speaker-row img{margin:0 auto}" +
+        ".rv-ev-precio-row{flex-direction:column!important;gap:12px!important;text-align:center}" +
       "}" +
 
       /* Smooth scroll ─────────────────────────────────────────── */
@@ -463,7 +465,7 @@
       /* speaker */
       '<div style="background:var(--rv-crema);border-radius:14px;padding:18px;margin-bottom:20px;">' +
         '<p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0 0 12px;">Tu guía en esta experiencia</p>' +
-        '<div style="display:flex;gap:14px;align-items:center;margin-bottom:12px;">' +
+        '<div class="rv-ev-speaker-row" style="display:flex;gap:14px;align-items:center;margin-bottom:12px;">' +
           '<img src="' + SPEAKER.foto + '" alt="' + SPEAKER.nombre + '" style="width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--rv-rosa-mid);flex-shrink:0;"/>' +
           '<div>' +
             '<p style="font-size:16px;font-family:\'Alta\',serif;color:var(--rv-burdeo);margin:0 0 2px;">' + SPEAKER.nombre + '</p>' +
@@ -475,7 +477,7 @@
       '</div>' +
 
       /* precio */
-      '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(89,12,27,.05);border-radius:12px;padding:16px 20px;margin-bottom:20px;">' +
+      '<div class="rv-ev-precio-row" style="display:flex;align-items:center;justify-content:space-between;background:rgba(89,12,27,.05);border-radius:12px;padding:16px 20px;margin-bottom:20px;">' +
         '<div>' +
           '<p style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0 0 4px;">Inversión</p>' +
           '<p style="font-size:28px;font-family:\'Alta\',serif;color:var(--rv-burdeo);margin:0;">$25.000</p>' +
