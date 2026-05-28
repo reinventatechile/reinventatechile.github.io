@@ -407,7 +407,23 @@
     if (box) { box.classList.remove("rv-art-modal"); }
   }
 
-  /* ── TICKET + SPEAKER BUTTON (fuera del hover IX2) ────── */
+  /* ── BOTÓN NAV "PRIMER EVENTO" ─────────────────────────── */
+  function fixNavButton() {
+    document.querySelectorAll(".rt-navbar-button, .rt-button, a").forEach(function(el) {
+      if (el.textContent.trim().match(/^quiero ser parte$/i)) {
+        el.textContent = "Primer evento";
+        el.removeAttribute("href");
+        el.style.cursor = "pointer";
+        el.addEventListener("click", function(e) {
+          e.preventDefault();
+          var target = document.querySelector(".rt-case-studies, #rt-case-studies, [class*='case-studies']");
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    });
+  }
+
+  /* ── BOTÓN MÁS INFORMACIÓN EN TARJETA EVENTO ───────────── */
   function injectEventExtras() {
     var card = null;
     document.querySelectorAll(".rt-case-studies-cards").forEach(function(el) {
@@ -418,44 +434,74 @@
 
     var wrap = document.createElement("div"); wrap.className = "rv-spk-wrap";
 
-    // Ticket
-    var tick = document.createElement("div"); tick.id = "rv-ticket"; tick.className = "rv-up";
-    tick.innerHTML =
-      '<div class="rv-ticket-badge">🎟&nbsp; Plazas limitadas · 30 mayo · Puerto Varas</div>' +
-      '<div class="rv-ticket-row">' +
-        '<div class="rv-ticket-price">$25.000</div>' +
-        '<div class="rv-ticket-meta"><strong>Entrada general</strong><span>Transferencia tras inscripción</span></div>' +
-      '</div>' +
-      '<a href="https://reinventatechile.github.io/inscripcion/" target="_blank" rel="noopener noreferrer" style="' +
-        'display:block;text-align:center;padding:11px 20px;background:var(--rv-burdeo);color:var(--rv-crema);' +
-        'border-radius:50px;font-size:12px;font-family:\'AltaCaption\',sans-serif;letter-spacing:.5px;' +
-        'text-decoration:none;font-weight:600;transition:opacity .2s\'" ' +
-        'onmouseover="this.style.opacity=\'0.85\'" onmouseout="this.style.opacity=\'1\'">' +
-        'Quiero inscribirme →' +
-      '</a>';
-    wrap.appendChild(tick);
-
-    // Botón speaker
-    var btn = document.createElement("button"); btn.className = "rv-spk-btn rv-up rv-d1";
-    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg> Ver speaker: ' + SPEAKER.nombre;
-    btn.addEventListener("click", function() { openModal(buildSpeakerHTML()); });
+    var btn = document.createElement("button"); btn.className = "rv-spk-btn rv-up";
+    btn.style.cssText = "width:100%;justify-content:center;background:var(--rv-burdeo);color:var(--rv-crema);border:none;border-radius:50px;padding:13px 24px;font-size:13px;font-family:'AltaCaption',sans-serif;letter-spacing:.5px;font-weight:600;cursor:pointer;transition:opacity .2s;margin-top:8px;";
+    btn.textContent = "Más información →";
+    btn.addEventListener("mouseover", function() { this.style.opacity = ".85"; });
+    btn.addEventListener("mouseout", function() { this.style.opacity = "1"; });
+    btn.addEventListener("click", function() { openModal(buildEventDetailHTML()); });
     wrap.appendChild(btn);
 
     card.insertAdjacentElement("afterend", wrap);
   }
 
-  function buildSpeakerHTML() {
-    return '<div class="rv-spk-header">' +
-      '<img class="rv-spk-foto" src="' + SPEAKER.foto + '" alt="' + SPEAKER.nombre + '"/>' +
-      '<div><p class="rv-spk-nombre">' + SPEAKER.nombre + '</p><p class="rv-spk-cargo">' + SPEAKER.cargo + '</p><p class="rv-spk-tagline">' + SPEAKER.tagline + '</p></div>' +
-    '</div>' +
-    '<p class="rv-spk-bio">' + SPEAKER.bio + '</p>' +
-    '<p class="rv-spk-label">En este evento aprenderás:</p>' +
-    '<ul class="rv-spk-list">' + SPEAKER.aprende.map(function(i) { return '<li>' + i + '</li>'; }).join("") + '</ul>' +
-    '<a class="rv-spk-ig" href="' + SPEAKER.instagram + '" target="_blank" rel="noopener noreferrer">' +
-      '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>' +
-      '@pau.henriquezv' +
-    '</a>';
+  function buildEventDetailHTML() {
+    return (
+      /* encabezado */
+      '<p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0 0 8px;">Evento fundador · 30 mayo · Puerto Varas</p>' +
+      '<p style="font-size:24px;font-family:\'Alta\',serif;color:var(--rv-burdeo);margin:0 0 20px;line-height:1.2;">Una jornada para conocerte,<br>transformarte y conectar.</p>' +
+
+      /* programa */
+      '<p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0 0 12px;">Programa del día</p>' +
+      '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">' +
+        evPrograma("✦", "Dinámica de integración", "Activación con neurociencia para conectar contigo y con el grupo antes de comenzar.") +
+        evPrograma("✦", "Workshop de imagen personal", "Con Paulina Henríquez: colorimetría, estilo y proyección. Aprendes a usar tu imagen como herramienta.") +
+        evPrograma("✦", "Ejercicio de visualización", "Pones en práctica lo aprendido: visualización guiada de tu versión futura.") +
+        evPrograma("✦", "Coffee break & networking", "Tiempo para compartir, conectar con otras mujeres y cerrar la experiencia.") +
+      '</div>' +
+
+      /* speaker */
+      '<div style="background:var(--rv-crema);border-radius:14px;padding:18px;margin-bottom:20px;">' +
+        '<p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0 0 12px;">Tu guía en esta experiencia</p>' +
+        '<div style="display:flex;gap:14px;align-items:center;margin-bottom:12px;">' +
+          '<img src="' + SPEAKER.foto + '" alt="' + SPEAKER.nombre + '" style="width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--rv-rosa-mid);flex-shrink:0;"/>' +
+          '<div>' +
+            '<p style="font-size:16px;font-family:\'Alta\',serif;color:var(--rv-burdeo);margin:0 0 2px;">' + SPEAKER.nombre + '</p>' +
+            '<p style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0;">' + SPEAKER.cargo + '</p>' +
+          '</div>' +
+        '</div>' +
+        '<p style="font-size:13px;line-height:1.7;color:#444;margin:0 0 10px;">' + SPEAKER.bio + '</p>' +
+        '<a href="' + SPEAKER.instagram + '" target="_blank" rel="noopener noreferrer" style="font-size:12px;color:var(--rv-burdeo);font-family:\'AltaCaption\',sans-serif;">@pau.henriquezv →</a>' +
+      '</div>' +
+
+      /* precio */
+      '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(89,12,27,.05);border-radius:12px;padding:16px 20px;margin-bottom:20px;">' +
+        '<div>' +
+          '<p style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0 0 4px;">Inversión</p>' +
+          '<p style="font-size:28px;font-family:\'Alta\',serif;color:var(--rv-burdeo);margin:0;">$25.000</p>' +
+          '<p style="font-size:11px;color:var(--rv-gris);margin:2px 0 0;">Transferencia tras inscripción · Plazas limitadas</p>' +
+        '</div>' +
+      '</div>' +
+
+      /* CTA */
+      '<a href="https://reinventatechile.github.io/inscripcion/" target="_blank" rel="noopener noreferrer" ' +
+        'style="display:block;text-align:center;padding:14px 24px;background:var(--rv-burdeo);color:var(--rv-crema);' +
+        'border-radius:50px;font-size:13px;font-family:\'AltaCaption\',sans-serif;letter-spacing:.5px;' +
+        'text-decoration:none;font-weight:600;" ' +
+        'onmouseover="this.style.opacity=\'0.85\'" onmouseout="this.style.opacity=\'1\'">' +
+        'Quiero inscribirme →' +
+      '</a>'
+    );
+  }
+
+  function evPrograma(icon, titulo, desc) {
+    return '<div style="display:flex;gap:12px;align-items:flex-start;">' +
+      '<span style="color:var(--rv-rosa-mid);font-size:14px;margin-top:2px;flex-shrink:0;">' + icon + '</span>' +
+      '<div>' +
+        '<p style="font-size:13px;font-weight:600;color:var(--rv-burdeo);margin:0 0 2px;">' + titulo + '</p>' +
+        '<p style="font-size:12px;color:#555;line-height:1.6;margin:0;">' + desc + '</p>' +
+      '</div>' +
+    '</div>';
   }
 
   /* ── BLOG ──────────────────────────────────────────────── */
@@ -594,6 +640,7 @@
   function init() {
     injectStyles();
     fixContent();
+    fixNavButton();
     initProgress();
     initModal();
     injectEventExtras();
