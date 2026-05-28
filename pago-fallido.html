@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pago no completado · Reinvéntate</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{min-height:100vh;background:#F2EFEB;font-family:Georgia,serif;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+    .card{background:#fff;border-radius:20px;padding:48px 40px;max-width:480px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(89,12,27,.08)}
+    .icon{width:64px;height:64px;background:rgba(89,12,27,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:28px}
+    .eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8C3535;font-family:Arial,sans-serif;margin-bottom:12px}
+    h1{font-size:28px;font-weight:400;color:#590C1B;line-height:1.2;margin-bottom:16px}
+    .subtitle{font-size:15px;color:#666;line-height:1.8;margin-bottom:28px;font-family:Arial,sans-serif}
+    .info{background:#F2EFEB;border-radius:14px;padding:18px 22px;margin-bottom:28px;text-align:left}
+    .info p{font-size:13px;color:#555;line-height:1.7;font-family:Arial,sans-serif}
+    .info p + p{margin-top:8px}
+    .btn{display:inline-block;padding:13px 32px;background:#590C1B;color:#F2EFEB;border-radius:50px;font-size:13px;font-family:Arial,sans-serif;letter-spacing:.5px;text-decoration:none;transition:opacity .2s;margin-bottom:14px}
+    .btn:hover{opacity:.85}
+    .btn-sec{display:block;font-size:13px;color:#8C3535;font-family:Arial,sans-serif;text-decoration:none}
+    .btn-sec:hover{text-decoration:underline}
+    .footer{margin-top:32px;font-size:11px;color:#aaa;font-family:Arial,sans-serif;letter-spacing:.5px}
+    @media(max-width:480px){.card{padding:36px 24px}h1{font-size:22px}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">✕</div>
+    <p class="eyebrow">Reinvéntate · Puerto Varas</p>
+    <h1>El pago no se completó</h1>
+    <p class="subtitle">Hubo un problema al procesar tu pago. Tu cupo no fue reservado todavía — no te preocupes, puedes intentarlo de nuevo.</p>
+
+    <div class="info">
+      <p>Posibles causas: fondos insuficientes, datos de tarjeta incorrectos o tiempo de sesión agotado.</p>
+      <p>Si el problema persiste, contáctanos y te ayudamos a completar tu inscripción.</p>
+    </div>
+
+    <a href="https://reinventatechile.github.io/inscripcion/" class="btn">Volver a intentarlo →</a>
+    <a href="mailto:reinventate@reinventatechile.cl" class="btn-sec">Contactar al equipo</a>
+
+    <p class="footer">reinventate@reinventatechile.cl</p>
+  </div>
+</body>
+</html>
