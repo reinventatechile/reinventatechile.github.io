@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a0710"/>
+      <stop offset="60%" style="stop-color:#590C1B"/>
+      <stop offset="100%" style="stop-color:#8C3535"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#D9A0AB;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#D9A0AB;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#D9A0AB;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Brillo diagonal sutil -->
+  <rect width="1200" height="630" fill="url(#shine)" transform="rotate(-15 600 315)"/>
+
+  <!-- Línea decorativa izquierda -->
+  <rect x="72" y="72" width="1.5" height="486" fill="#D9A0AB" opacity="0.4"/>
+
+  <!-- Línea decorativa derecha -->
+  <rect x="1127" y="72" width="1.5" height="486" fill="#D9A0AB" opacity="0.4"/>
+
+  <!-- Línea superior -->
+  <rect x="72" y="72" width="1056" height="1.5" fill="#D9A0AB" opacity="0.4"/>
+
+  <!-- Línea inferior -->
+  <rect x="72" y="556" width="1056" height="1.5" fill="#D9A0AB" opacity="0.4"/>
+
+  <!-- Ornamento esquina sup izq -->
+  <rect x="72" y="72" width="40" height="1.5" fill="#D9A0AB" opacity="0.9"/>
+  <rect x="72" y="72" width="1.5" height="40" fill="#D9A0AB" opacity="0.9"/>
+
+  <!-- Ornamento esquina sup der -->
+  <rect x="1088" y="72" width="40" height="1.5" fill="#D9A0AB" opacity="0.9"/>
+  <rect x="1127" y="72" width="1.5" height="40" fill="#D9A0AB" opacity="0.9"/>
+
+  <!-- Ornamento esquina inf izq -->
+  <rect x="72" y="556" width="40" height="1.5" fill="#D9A0AB" opacity="0.9"/>
+  <rect x="72" y="516" width="1.5" height="40" fill="#D9A0AB" opacity="0.9"/>
+
+  <!-- Ornamento esquina inf der -->
+  <rect x="1088" y="556" width="40" height="1.5" fill="#D9A0AB" opacity="0.9"/>
+  <rect x="1127" y="516" width="1.5" height="40" fill="#D9A0AB" opacity="0.9"/>
+
+  <!-- Eyebrow -->
+  <text x="600" y="168" font-family="Georgia, serif" font-size="13" fill="#D9A0AB" text-anchor="middle" letter-spacing="5" opacity="0.9">EVENTO FUNDADOR · PUERTO VARAS</text>
+
+  <!-- Línea separadora eyebrow -->
+  <rect x="480" y="182" width="240" height="1" fill="#D9A0AB" opacity="0.3"/>
+
+  <!-- Título principal -->
+  <text x="600" y="270" font-family="Georgia, serif" font-size="72" fill="#F2EFEB" text-anchor="middle" font-weight="400">Reinvéntate</text>
+
+  <!-- Subtítulo -->
+  <text x="600" y="330" font-family="Georgia, serif" font-size="26" fill="#F2D8DC" text-anchor="middle" font-style="italic" opacity="0.85">Una jornada para reconocerte, transformarte y conectar</text>
+
+  <!-- Divisor central -->
+  <text x="600" y="385" font-family="Georgia, serif" font-size="18" fill="#D9A0AB" text-anchor="middle" opacity="0.6">✦</text>
+
+  <!-- Info row: fecha / lugar / precio -->
+  <text x="320" y="435" font-family="Georgia, serif" font-size="15" fill="#D9A0AB" text-anchor="middle" letter-spacing="3" opacity="0.7">FECHA</text>
+  <text x="320" y="462" font-family="Georgia, serif" font-size="22" fill="#F2EFEB" text-anchor="middle">Sábado 30 de mayo</text>
+
+  <rect x="590" y="420" width="1" height="55" fill="#D9A0AB" opacity="0.25"/>
+
+  <text x="660" y="435" font-family="Georgia, serif" font-size="15" fill="#D9A0AB" text-anchor="middle" letter-spacing="3" opacity="0.7">LUGAR</text>
+  <text x="660" y="462" font-family="Georgia, serif" font-size="22" fill="#F2EFEB" text-anchor="middle">Hotel Casona Freire</text>
+
+  <rect x="870" y="420" width="1" height="55" fill="#D9A0AB" opacity="0.25"/>
+
+  <text x="1000" y="435" font-family="Georgia, serif" font-size="15" fill="#D9A0AB" text-anchor="middle" letter-spacing="3" opacity="0.7">INVERSIÓN</text>
+  <text x="1000" y="462" font-family="Georgia, serif" font-size="28" fill="#F2EFEB" text-anchor="middle">$25.000</text>
+
+  <!-- URL -->
+  <text x="600" y="525" font-family="Georgia, serif" font-size="16" fill="#D9A0AB" text-anchor="middle" letter-spacing="2" opacity="0.55">reinventatechile.cl</text>
+</svg>
