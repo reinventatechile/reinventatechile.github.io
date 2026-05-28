@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pago recibido · Reinvéntate</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{min-height:100vh;background:#F2EFEB;font-family:Georgia,serif;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+    .card{background:#fff;border-radius:20px;padding:48px 40px;max-width:480px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(89,12,27,.08)}
+    .icon{width:64px;height:64px;background:rgba(89,12,27,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:28px}
+    .eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8C3535;font-family:Arial,sans-serif;margin-bottom:12px}
+    h1{font-size:28px;font-weight:400;color:#590C1B;line-height:1.2;margin-bottom:16px}
+    .subtitle{font-size:15px;color:#666;line-height:1.8;margin-bottom:32px;font-family:Arial,sans-serif}
+    .steps{background:#F2EFEB;border-radius:14px;padding:20px 24px;margin-bottom:32px;text-align:left}
+    .step{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(89,12,27,.08)}
+    .step:last-child{border-bottom:none}
+    .step-num{width:22px;height:22px;background:#590C1B;color:#F2EFEB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;font-family:Arial,sans-serif}
+    .step-text{font-size:13px;color:#444;line-height:1.6;font-family:Arial,sans-serif}
+    .btn{display:inline-block;padding:13px 32px;background:#590C1B;color:#F2EFEB;border-radius:50px;font-size:13px;font-family:Arial,sans-serif;letter-spacing:.5px;text-decoration:none;transition:opacity .2s}
+    .btn:hover{opacity:.85}
+    .footer{margin-top:32px;font-size:11px;color:#aaa;font-family:Arial,sans-serif;letter-spacing:.5px}
+    @media(max-width:480px){.card{padding:36px 24px}h1{font-size:22px}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">✦</div>
+    <p class="eyebrow">Reinvéntate · Puerto Varas</p>
+    <h1>Tu pago fue recibido con éxito</h1>
+    <p class="subtitle">Gracias por inscribirte al evento fundador de Reinvéntate. En breve recibirás la confirmación de tu cupo por correo.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <p class="step-text">Estamos verificando tu pago — esto toma solo unos minutos.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <p class="step-text">Recibirás un correo con tu cupo confirmado y todos los detalles del evento.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <p class="step-text">El sábado 30 de mayo, te esperamos a las 11:30 hrs en Hotel Casona Freire, Puerto Varas.</p>
+      </div>
+    </div>
+
+    <a href="https://reinventatechile.cl" class="btn">Volver al sitio →</a>
+    <p class="footer">¿Dudas? reinventate@reinventatechile.cl</p>
+  </div>
+</body>
+</html>
