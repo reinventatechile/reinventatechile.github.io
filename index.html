@@ -638,7 +638,7 @@
   function injectSticky() {
     if (document.getElementById("rv-sticky")) return;
     var s = document.createElement("div"); s.id = "rv-sticky";
-    s.innerHTML = '<a href="https://reinventatechile.github.io/inscripcion/" target="_blank" rel="noopener noreferrer">✨ Inscribirme · $25.000</a>';
+    s.innerHTML = '<a href="https://reinventatechile.github.io/inscripcion/" target="_blank" rel="noopener noreferrer">Inscribirme · $25.000</a>';
     document.body.appendChild(s);
     var form = document.querySelector("form");
     if (form) new IntersectionObserver(function(e) { s.style.display = e[0].isIntersecting ? "none" : ""; }, { threshold: .2 }).observe(form);
