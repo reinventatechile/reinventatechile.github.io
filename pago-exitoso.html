@@ -93,7 +93,7 @@
 
 <script>
 // URL del Apps Script (mismo que el formulario)
-var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw6SFLgenek1pUmDhOCdVRncSuLLZksju-MN_uZ_azbKRd5rpvjcJmV7_Xyn_akNKNJ/exec';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoTAyWRa1FPuVwCpCzJvWf4lwK8Xe5curhSct126G-uuJtwETtAvuqFSJ_fDK656kR/exec';
 
 function getParam(name) {
   var params = new URLSearchParams(window.location.search);
@@ -133,7 +133,7 @@ if (!token) {
         showState('success',
           '¡Tu inscripción está confirmada!',
           'Tu pago fue recibido con éxito. En breve recibirás un correo con los detalles del evento.',
-          'Sábado 30 de mayo · 11:30 hrs · Hotel Casona Freire, Puerto Varas',
+          'Sábado 27 de junio · 10:00 hrs · Hotel Borde Lago, Puerto Varas',
           '<a href="https://reinventatechile.cl" class="btn">Ir al sitio</a>'
         );
       } else if (data.status === 'pendiente') {

@@ -117,18 +117,18 @@
   ];
 
   var SPEAKER = {
-    nombre:    "Paulina Henríquez",
-    cargo:     "Asesora de Imagen · Encargada Liola Osorno",
+    nombre:    "Andrés San Martín",
+    cargo:     "Speaker motivacional · Coach · CEO Grupo CREE",
     tagline:   "Tu guía en esta experiencia",
-    bio:       "Asesora de imagen especializada en colorimetría y construcción de estilo personal con enfoque estratégico. Acompaño a mujeres a descubrir los colores, formas y prendas que potencian su esencia, elevando su seguridad y coherencia visual. Mi enfoque combina estética, identidad y propósito.",
+    bio:       "Speaker motivacional, coach y CEO de Grupo CREE. Guía experiencias participativas, profundas y entretenidas sobre cómo funcionan nuestras creencias, cómo se forman los límites mentales y cómo romperlos desde adentro. Su mensaje es claro: no es magia, es ciencia aplicada a tu bienestar y a tu poder de transformación.",
     aprende:   [
-      "Comprender tu código de imagen y qué estás comunicando hoy",
-      "Definir qué quieres proyectar",
-      "Usar el color a tu favor para potenciar tu presencia",
-      "Conectar tu imagen con seguridad y autenticidad"
+      "Cómo se forman tus creencias y tus límites mentales",
+      "Por qué tu cerebro repite patrones y cómo interrumpirlos",
+      "Usar la plasticidad cerebral para rediseñar tu futuro",
+      "Herramientas prácticas para crear nuevas versiones de ti"
     ],
-    instagram: "https://www.instagram.com/pau.henriquezv",
-    foto:      "https://cdn.prod.website-files.com/69e10682976777cf635a56e1/6a11e44ad91f74eb123db444_paulina-henriquez.jpeg"
+    instagram: "https://www.instagram.com/andressanmartin/",
+    foto:      "andres-san-martin.jpeg"
   };
 
   var LEAD_CONTENT = {
@@ -429,7 +429,7 @@
   function injectEventExtras() {
     var card = null;
     document.querySelectorAll(".rt-case-studies-cards").forEach(function(el) {
-      if (!card && el.textContent.match(/imagen personal|colorimetr|evento fundador/i)) card = el;
+      if (!card && el.textContent.match(/rediseña tu realidad|creencias|próximo evento|imagen personal|colorimetr|evento fundador/i)) card = el;
     });
     if (!card || card.dataset.rvDone) return;
     card.dataset.rvDone = "1";
@@ -450,14 +450,14 @@
   function buildEventDetailHTML() {
     return (
       /* encabezado */
-      '<p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0 0 8px;">Evento fundador · 30 mayo · Puerto Varas</p>' +
+      '<p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0 0 8px;">Próximo evento · Sábado 27 de junio · Puerto Varas</p>' +
       '<p style="font-size:24px;font-family:\'Alta\',serif;color:var(--rv-burdeo);margin:0 0 20px;line-height:1.2;">Una jornada para conocerte,<br>transformarte y conectar.</p>' +
 
       /* programa */
       '<p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0 0 12px;">Programa del día</p>' +
       '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">' +
         evPrograma("✦", "Dinámica de integración", "Activación con neurociencia para conectar contigo y con el grupo antes de comenzar.") +
-        evPrograma("✦", "Workshop de imagen personal", "Con Paulina Henríquez: colorimetría, estilo y proyección. Aprendes a usar tu imagen como herramienta.") +
+        evPrograma("✦", "Charla-experiencia: Rediseña tu realidad", "Con Andrés San Martín: cómo se forman tus creencias y tus límites mentales, y cómo romperlos desde adentro con neurociencia.") +
         evPrograma("✦", "Ejercicio de visualización", "Pones en práctica lo aprendido: visualización guiada de tu versión futura.") +
         evPrograma("✦", "Coffee break & networking", "Tiempo para compartir, conectar con otras mujeres y cerrar la experiencia.") +
       '</div>' +
@@ -473,15 +473,15 @@
           '</div>' +
         '</div>' +
         '<p style="font-size:13px;line-height:1.7;color:#444;margin:0 0 10px;">' + SPEAKER.bio + '</p>' +
-        '<a href="' + SPEAKER.instagram + '" target="_blank" rel="noopener noreferrer" style="font-size:12px;color:var(--rv-burdeo);font-family:\'AltaCaption\',sans-serif;">@pau.henriquezv →</a>' +
+        '<a href="' + SPEAKER.instagram + '" target="_blank" rel="noopener noreferrer" style="font-size:12px;color:var(--rv-burdeo);font-family:\'AltaCaption\',sans-serif;">@andressanmartin →</a>' +
       '</div>' +
 
       /* precio */
       '<div class="rv-ev-precio-row" style="display:flex;align-items:center;justify-content:space-between;background:rgba(89,12,27,.05);border-radius:12px;padding:16px 20px;margin-bottom:20px;">' +
         '<div>' +
           '<p style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--rv-terra);font-family:\'AltaCaption\',sans-serif;margin:0 0 4px;">Inversión</p>' +
-          '<p style="font-size:28px;font-family:\'Alta\',serif;color:var(--rv-burdeo);margin:0;">$25.000</p>' +
-          '<p style="font-size:11px;color:var(--rv-gris);margin:2px 0 0;">Transferencia tras inscripción · Plazas limitadas</p>' +
+          '<p style="font-size:28px;font-family:\'Alta\',serif;color:var(--rv-burdeo);margin:0;">$22.900</p>' +
+          '<p style="font-size:11px;color:var(--rv-gris);margin:2px 0 0;">Early bird hasta el 24 jun · luego $25.900 · Plazas limitadas</p>' +
         '</div>' +
       '</div>' +
 
@@ -632,7 +632,7 @@
   function injectSticky() {
     if (document.getElementById("rv-sticky")) return;
     var s = document.createElement("div"); s.id = "rv-sticky";
-    s.innerHTML = '<a href="https://reinventatechile.github.io/inscripcion/" target="_blank" rel="noopener noreferrer">✨ Inscribirme · $25.000</a>';
+    s.innerHTML = '<a href="https://reinventatechile.github.io/inscripcion/" target="_blank" rel="noopener noreferrer">✨ Inscribirme · Desde $22.900</a>';
     document.body.appendChild(s);
     var form = document.querySelector("form");
     if (form) new IntersectionObserver(function(e) { s.style.display = e[0].isIntersecting ? "none" : ""; }, { threshold: .2 }).observe(form);
