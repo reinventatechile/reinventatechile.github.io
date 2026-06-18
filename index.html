@@ -330,6 +330,16 @@
         /* Video */
         "#rv-video{padding:60px 16px}" +
         ".rv-ig-wrap{max-width:100%}" +
+        /* Eventos móvil mejorado */
+        ".rt-case-studies-content{padding:20px 18px!important}" +
+        ".rt-case-studies-details{padding:0!important}" +
+        ".rt-details-list-items{padding:8px 0!important}" +
+        ".rt-list-title,.rt-list-text{font-size:14px!important}" +
+        ".rt-h5-heading{font-size:20px!important;margin-bottom:8px!important}" +
+        ".rt-case-studies-image{height:220px!important;object-fit:cover!important}" +
+        ".rt-cases-bottom{flex-direction:column!important;gap:16px!important;text-align:center!important;padding:24px 16px!important}" +
+        ".rt-cases-bottom .rt-h4-heading{font-size:16px!important}" +
+        ".rt-cases-bottom .rt-line{display:none!important}" +
       "}" +
       "@media(max-width:480px){" +
         ".rv-blog-inner{padding:0 16px}" +
@@ -391,6 +401,23 @@
     });
   }
 
+  /* ── FOTOS DEL EVENTO ───────────────────────────────────── */
+  function injectEventPhotos() {
+    var hero = document.querySelector(".rt-hero");
+    if (!hero) return;
+    hero.style.cssText += "position:relative;overflow:hidden;";
+    var bg = document.createElement("div");
+    bg.style.cssText = "position:absolute;inset:0;z-index:0;background:url('evento-mayo-2.jpg') center/cover no-repeat;opacity:0.18;";
+    hero.prepend(bg);
+    var aboutImg = document.querySelector(".rt-about-v2-image img");
+    if (aboutImg) {
+      aboutImg.src = "evento-mayo-1.jpg";
+      aboutImg.srcset = "";
+      aboutImg.alt = "Asistentes al evento Reinvéntate mayo 2026 en Puerto Varas";
+      aboutImg.style.opacity = "1";
+    }
+  }
+
   /* ── BARRA DE PROGRESO ─────────────────────────────────── */
   function initProgress() {
     var b = document.createElement("div"); b.id = "rv-bar"; document.body.prepend(b);
@@ -441,31 +468,24 @@
       var text = el.textContent.trim().toLowerCase();
 
       if (text === "quiero ser parte") {
-        el.textContent = "Primer evento";
+        el.textContent = "Reserva tu cupo";
         var link = el.closest("a");
         if (link && !link.dataset.rvNavFixed) {
           link.dataset.rvNavFixed = "1";
-          link.removeAttribute("href");
-          link.style.cursor = "pointer";
-          link.addEventListener("click", function(e) {
-            e.preventDefault();
-            var target = document.querySelector(".rt-case-studies, [class*='case-studies']");
-            if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-          });
+          link.href = "https://reinventatechile.github.io/inscripcion/";
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
         }
       }
 
       if (text === "quiero asistir") {
-        el.textContent = "Más información";
+        el.textContent = "Inscribirme";
         var link = el.closest("a");
         if (link && !link.dataset.rvAsistirFixed) {
           link.dataset.rvAsistirFixed = "1";
-          link.removeAttribute("href");
-          link.style.cursor = "pointer";
-          link.addEventListener("click", function(e) {
-            e.preventDefault();
-            openModal(buildEventDetailHTML());
-          });
+          link.href = "https://reinventatechile.github.io/inscripcion/";
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
         }
       }
     });
@@ -475,15 +495,11 @@
       var txt = el.textContent.trim().toLowerCase();
       if ((txt === "quiero asistir" || txt === "quiero asistir quiero asistir") && !el.dataset.rvAsistirFixed) {
         el.dataset.rvAsistirFixed = "1";
-        // Reemplazar texto visible sin romper estructura interna
         var tSpan = el.querySelector(".rt-button-text") || el;
-        if (!tSpan.dataset.rvAsistirFixed) tSpan.textContent = "Más información";
-        el.removeAttribute("href");
-        el.style.cursor = "pointer";
-        el.addEventListener("click", function(e) {
-          e.preventDefault();
-          openModal(buildEventDetailHTML());
-        });
+        if (!tSpan.dataset.rvAsistirFixed) tSpan.textContent = "Inscribirme";
+        el.href = "https://reinventatechile.github.io/inscripcion/";
+        el.target = "_blank";
+        el.rel = "noopener noreferrer";
       }
     });
   }
@@ -727,10 +743,10 @@
     injectStyles();
     fixContent();
     fixNavButton();
+    injectEventPhotos();
     injectTicker();
     initProgress();
     initModal();
-    injectEventExtras();
     injectBlog();
     injectVideo();
     injectLead();
