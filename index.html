@@ -480,8 +480,8 @@
 
       if (text === "quiero asistir") {
         var link = el.closest("a");
-        var isMobile = link && link.closest(".rt-mobile-slider-v2");
-        if (isMobile) {
+        var isEvent = link && link.closest(".rt-case-studies");
+        if (isEvent) {
           el.textContent = "Más información";
           if (link && !link.dataset.rvAsistirFixed) {
             link.dataset.rvAsistirFixed = "1";
@@ -506,9 +506,9 @@
       var txt = el.textContent.trim().toLowerCase();
       if ((txt === "quiero asistir" || txt === "quiero asistir quiero asistir") && !el.dataset.rvAsistirFixed) {
         el.dataset.rvAsistirFixed = "1";
-        var isMobile = el.closest(".rt-mobile-slider-v2");
+        var isEvent = el.closest(".rt-case-studies");
         var tSpan = el.querySelector(".rt-button-text") || el;
-        if (isMobile) {
+        if (isEvent) {
           if (!tSpan.dataset.rvAsistirFixed) tSpan.textContent = "Más información";
           el.href = "#";
           el.removeAttribute("target");
@@ -521,6 +521,17 @@
         }
       }
     });
+
+    // Cambiar "QUE NO TE LO CUENTEN!" en sección eventos → "Más información" con modal
+    var casesBottom = document.querySelector(".rt-cases-bottom .rt-button-v2");
+    if (casesBottom && !casesBottom.dataset.rvFixed) {
+      casesBottom.dataset.rvFixed = "1";
+      var txt = casesBottom.querySelector(".rt-short-heading");
+      if (txt) txt.textContent = "Más información";
+      casesBottom.href = "#";
+      casesBottom.removeAttribute("target");
+      casesBottom.addEventListener("click", function(e) { e.preventDefault(); openModal(buildEventDetailHTML()); });
+    }
   }
 
   /* ── TICKER SCROLLING ──────────────────────────────────── */
