@@ -479,13 +479,24 @@
       }
 
       if (text === "quiero asistir") {
-        el.textContent = "Inscribirme";
         var link = el.closest("a");
-        if (link && !link.dataset.rvAsistirFixed) {
-          link.dataset.rvAsistirFixed = "1";
-          link.href = "https://reinventatechile.github.io/inscripcion/";
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
+        var isMobile = link && link.closest(".rt-mobile-slider-v2");
+        if (isMobile) {
+          el.textContent = "Más información";
+          if (link && !link.dataset.rvAsistirFixed) {
+            link.dataset.rvAsistirFixed = "1";
+            link.href = "#";
+            link.removeAttribute("target");
+            link.addEventListener("click", function(e) { e.preventDefault(); openModal(buildEventDetailHTML()); });
+          }
+        } else {
+          el.textContent = "Inscribirme";
+          if (link && !link.dataset.rvAsistirFixed) {
+            link.dataset.rvAsistirFixed = "1";
+            link.href = "https://reinventatechile.github.io/inscripcion/";
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+          }
         }
       }
     });
@@ -495,11 +506,19 @@
       var txt = el.textContent.trim().toLowerCase();
       if ((txt === "quiero asistir" || txt === "quiero asistir quiero asistir") && !el.dataset.rvAsistirFixed) {
         el.dataset.rvAsistirFixed = "1";
+        var isMobile = el.closest(".rt-mobile-slider-v2");
         var tSpan = el.querySelector(".rt-button-text") || el;
-        if (!tSpan.dataset.rvAsistirFixed) tSpan.textContent = "Inscribirme";
-        el.href = "https://reinventatechile.github.io/inscripcion/";
-        el.target = "_blank";
-        el.rel = "noopener noreferrer";
+        if (isMobile) {
+          if (!tSpan.dataset.rvAsistirFixed) tSpan.textContent = "Más información";
+          el.href = "#";
+          el.removeAttribute("target");
+          el.addEventListener("click", function(e) { e.preventDefault(); openModal(buildEventDetailHTML()); });
+        } else {
+          if (!tSpan.dataset.rvAsistirFixed) tSpan.textContent = "Inscribirme";
+          el.href = "https://reinventatechile.github.io/inscripcion/";
+          el.target = "_blank";
+          el.rel = "noopener noreferrer";
+        }
       }
     });
   }
